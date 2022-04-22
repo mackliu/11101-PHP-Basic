@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+<div>
+        <a href="index.html">回目錄</a>
+    </div>
     <h1>字串函式整合應用</h1>
     <article>
         <h3>尋找字串與HTML、css整合應用</h3>

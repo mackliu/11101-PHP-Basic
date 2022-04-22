@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+<div>
+        <a href="index.html">回目錄</a>
+    </div>
     <h1>子字串的應用</h1>
     <article>
         <h3>子字串取用</h3>
