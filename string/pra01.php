@@ -14,9 +14,9 @@
 
 </article>
 <?php
-$password="aadd";
+$password="aaddw1123";
 //str_replace() 
-//$password=str_replace("a","*",$password);
+//$password=str_replace(["a","d","w","1","2","3"],"*",$password);
 $strlen=mb_strlen($password);
 $password=str_repeat("*",$strlen);
 echo $password;
