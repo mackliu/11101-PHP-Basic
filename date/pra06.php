@@ -15,12 +15,20 @@
             text-align: center;
             border:1px solid #aaa;
         }
-
+        .weekend{
+            background:pink;
+        }
+        .workday{
+            background:white;
+        }
+        .today{
+            background:lightseagreen;
+        }
     </style>
 </head>
 <body>
 <?php
-$month=4;
+$month=5;
 
 ?>
 <table>
@@ -39,7 +47,7 @@ $firstDay=date("Y-").$month."-1";
 $firstWeekday=date("w",strtotime($firstDay));
 $monthDays=date("t",strtotime($firstDay));
 $lastDay=date("Y-").$month."-".$monthDays;
-
+$today=date("Y-m-d");
 echo "月份".$month;
 echo "<br>";
 echo "第一天是".$firstDay;
@@ -54,16 +62,29 @@ for($i=0;$i<6;$i++){
     echo "<tr>";
     
     for($j=0;$j<7;$j++){
-
-        echo "<td>";
-        if($i==0 && $j==$firstWeekday){
-            echo "第一天";
-        }else if($i==0 && $j<$firstWeekday){
-            echo "";
+        $d=$i*7+($j+1)-$firstWeekday-1;
+        
+        if($d>=0 && $d<$monthDays){
+            $fs=strtotime($firstDay);
+            $shiftd=strtotime("+$d days",$fs);
+            $date=date("d",$shiftd);
+            $w=date("w",$shiftd);
+            $chktoday="";
+            if(date("Y-m-d",$shiftd)==$today){
+                $chktoday='today';
+            }
+            //$date=date("Y-m-d",strtotime("+$d days",strtotime($firstDay)));
+            if($w==0 || $w==6){
+                echo "<td class='weekend $chktoday' >";
+            }else{
+                echo "<td class='workday $chktoday'>";
+            }
+            echo $date;
+            echo "</td>";
         }else{
-            echo $i*7+($j+1);
+            echo "<td></td>";
         }
-        echo "</td>";
+            
 
     }
 
