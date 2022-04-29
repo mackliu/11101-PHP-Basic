@@ -29,7 +29,7 @@
 <body>
     <h1>使用陣列來做月曆</h1>
 <?php
-$month=5;
+$month=2;
 
 ?>
 <table>
@@ -49,6 +49,17 @@ $firstWeekday=date("w",strtotime($firstDay));
 $monthDays=date("t",strtotime($firstDay));
 $lastDay=date("Y-").$month."-".$monthDays;
 $today=date("Y-m-d");
+
+$dateHouse=[];
+for($i=0;$i<$monthDays;$i++){
+    $date=date("Y-m-d",strtotime("+$i days",strtotime($firstDay)));
+    $dateHouse[]=$date;
+}
+
+echo "<pre>";
+print_r($dateHouse);
+echo "</pre>";
+
 echo "月份".$month;
 echo "<br>";
 echo "第一天是".$firstDay;
