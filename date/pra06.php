@@ -27,6 +27,7 @@
     </style>
 </head>
 <body>
+    <h1>使用陣列來做月曆</h1>
 <?php
 $month=5;
 
