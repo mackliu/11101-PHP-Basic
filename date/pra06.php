@@ -49,17 +49,53 @@ $firstWeekday=date("w",strtotime($firstDay));
 $monthDays=date("t",strtotime($firstDay));
 $lastDay=date("Y-").$month."-".$monthDays;
 $today=date("Y-m-d");
-
+$lastWeekday=date("w",strtotime($lastDay));
 $dateHouse=[];
+
+for($i=0;$i<$firstWeekday;$i++){
+    $dateHouse[]="";
+}
+
 for($i=0;$i<$monthDays;$i++){
     $date=date("Y-m-d",strtotime("+$i days",strtotime($firstDay)));
     $dateHouse[]=$date;
+}
+
+for($i=0;$i<(6-$lastWeekday);$i++){
+    $dateHouse[]="";
 }
 
 echo "<pre>";
 print_r($dateHouse);
 echo "</pre>";
 
+foreach($dateHouse as $key=>$day){
+
+    if($key%7==0){
+        echo "<tr>";
+    }
+
+    if(!empty($day)){
+        $dayFormat=date("d",strtotime($day));
+    }else{
+        $dayFormat="";
+    }
+
+    //$dayFormat=(!empty($day))?date("d",strtotime($day)):"";
+
+    echo "<td>{$dayFormat}</td>";
+
+    if($key%7==6){
+        echo "</tr>";
+    }
+    
+}
+
+
+?>
+</table>
+<hr>
+<?php
 echo "月份".$month;
 echo "<br>";
 echo "第一天是".$firstDay;
@@ -70,6 +106,21 @@ echo "最後一天是".$lastDay;
 echo "<br>";
 echo "當月天數共".$monthDays;
 echo "<br>";
+?>
+
+
+<table>
+    <tr>
+        <td>日</td>
+        <td>一</td>
+        <td>二</td>
+        <td>三</td>
+        <td>四</td>
+        <td>五</td>
+        <td>六</td>
+    </tr>
+<?php
+
 for($i=0;$i<6;$i++){
     echo "<tr>";
     
